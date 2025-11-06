@@ -35,8 +35,8 @@ final class CipheredTextTestSuite: XCTestCase {
     }
 
     func testGetLetterIndexReturnsRightIndexOrZero() {
-        XCTAssert(CipheredTextModel.getLetterIndex("a") == 1)
-        XCTAssert(CipheredTextModel.getLetterIndex("Z") == 26)
+        XCTAssert(CipheredTextModel.getLetterIndex("a") == 0)
+        XCTAssert(CipheredTextModel.getLetterIndex("Z") == 25)
         XCTAssert(CipheredTextModel.getLetterIndex(" ") == 0)
     }
 }

@@ -46,11 +46,11 @@ let letterToIndexArray = [
 struct CipheredTextModel {
     static func getLetterIndex(_ letter: String) -> Int {
         if letter.count == 1 && isValidLetter(letter) {
-            return letterToIndexArray.firstIndex(of: letter.uppercased())! + 1
+            return letterToIndexArray.firstIndex(of: letter.uppercased())!
         }
         return 0
     }
-    
+
     static func isValidLetter(_ letter: String) -> Bool {
         return letterToIndexArray.contains(letter.uppercased()) // all valid letters must be in letterToIndexArray
     }
