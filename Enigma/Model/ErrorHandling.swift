@@ -6,5 +6,9 @@
 //
 
 enum TextError: Error {
-    case invalidValue
+    case InvalidValue
+}
+
+enum PlugboardError: Error {
+    case PlugboardConnectionError
 }

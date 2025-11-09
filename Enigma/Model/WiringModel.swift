@@ -50,7 +50,7 @@ struct WiringModel {
 
     mutating func setupWiringArray() throws {
         guard CipheredTextModel.isStringArrayConsistingOfValidLetters(self.wiringArray) else {
-            throw TextError.invalidValue
+            throw TextError.InvalidValue
         }
         if self.startingIndex > 0 {
             for _ in 0..<self.startingIndex {
@@ -61,7 +61,7 @@ struct WiringModel {
 
     func validateStartingIndexAndTurnoverNotch() throws {
         if !isIndexValid(index: self.startingIndex) || !isIndexValid(index: self.turnoverNotch) {
-            throw TextError.invalidValue
+            throw TextError.InvalidValue
         }
     }
 
