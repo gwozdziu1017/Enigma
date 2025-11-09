@@ -10,6 +10,35 @@ import XCTest
 
 final class CipheredTextTestSuite: XCTestCase {
 
+    let letterToIndexArray = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+    ]
+
     override func setUpWithError() throws {
 
     }
@@ -35,9 +64,9 @@ final class CipheredTextTestSuite: XCTestCase {
     }
 
     func testGetLetterIndexReturnsRightIndexOrZero() {
-        XCTAssert(CipheredTextModel.getLetterIndex("a") == 0)
-        XCTAssert(CipheredTextModel.getLetterIndex("Z") == 25)
-        XCTAssert(CipheredTextModel.getLetterIndex(" ") == 0)
+        XCTAssert(CipheredTextModel.getLetterIndex(letter: "a", arrayToGetIndexFrom: letterToIndexArray) == 0)
+        XCTAssert(CipheredTextModel.getLetterIndex(letter: "Z", arrayToGetIndexFrom: letterToIndexArray) == 25)
+        XCTAssert(CipheredTextModel.getLetterIndex(letter: " ", arrayToGetIndexFrom: letterToIndexArray) == 0)
     }
 
     func testMakeArrayFromStringWhenValidStringReturnArrayOfStrings() {

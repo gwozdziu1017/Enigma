@@ -6,10 +6,7 @@
 //
 
 /*
- CipheredTextModel is a struct responsible for all kind of text related operations such as:
-    - calculating index of given letter
-    - holding ciphered and open text
-    etc
+ CipheredTextModel is a struct responsible for all kind of text related operations
  */
 
 import Foundation
@@ -44,9 +41,10 @@ let letterToIndexArray = [
 ]
 
 struct CipheredTextModel {
-    static func getLetterIndex(_ letter: String) -> Int {
+    static func getLetterIndex(letter: String, arrayToGetIndexFrom: [String]) -> Int {
+        let uppercasedArray = arrayToGetIndexFrom.map { $0.uppercased() }
         if letter.count == 1 && isValidLetter(letter) {
-            return letterToIndexArray.firstIndex(of: letter.uppercased())!
+            return uppercasedArray.firstIndex(of: letter.uppercased())!
         }
         return 0
     }
