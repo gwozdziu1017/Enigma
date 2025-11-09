@@ -54,4 +54,25 @@ struct CipheredTextModel {
     static func isValidLetter(_ letter: String) -> Bool {
         return letterToIndexArray.contains(letter.uppercased()) // all valid letters must be in letterToIndexArray
     }
+
+    static func isStringArrayConsistingOfValidLetters(_ stringArray: [String]) -> Bool {
+        guard !stringArray.isEmpty else {
+            return false
+        }
+
+        for string in stringArray {
+            if string.count != 1 || !isValidLetter(string) {
+                return false
+            }
+        }
+        return true
+    }
+
+    static func makeArrayFromString(_ string: String) -> [String] {
+        var arrayToReturn: [String] = []
+        for character in string {
+            arrayToReturn.append(String(character))
+        }
+        return arrayToReturn
+    }
 }

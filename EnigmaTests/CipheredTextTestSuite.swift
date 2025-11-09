@@ -39,53 +39,50 @@ final class CipheredTextTestSuite: XCTestCase {
         XCTAssert(CipheredTextModel.getLetterIndex("Z") == 25)
         XCTAssert(CipheredTextModel.getLetterIndex(" ") == 0)
     }
+
+    func testMakeArrayFromStringWhenValidStringReturnArrayOfStrings() {
+        let validString = "ABCDEFG"
+        XCTAssert(CipheredTextModel.makeArrayFromString(validString) == [ "A", "B", "C", "D", "E", "F", "G" ])
+    }
+
+    func testMakeArrayFromStringWhenValidStringEvenWithForbiddenCharactersReturnArrayOfStrings() {
+        let validStringWithForbiddenChars = "ABCDEFG123"
+        XCTAssert(CipheredTextModel.makeArrayFromString(validStringWithForbiddenChars) == [ "A", "B", "C", "D", "E", "F", "G", "1", "2", "3"])
+    }
+
+    func testMakeArrayFromStringWhenEmptyStringReturnEmptyArray() {
+        let emptyString: String = ""
+        XCTAssert(CipheredTextModel.makeArrayFromString(emptyString) == [])
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenValidStringArrayReturnsTrue() {
+        let validStringArray = ["A", "B", "c"]
+        XCTAssert(CipheredTextModel.isStringArrayConsistingOfValidLetters(validStringArray))
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenStringArrayContainsNumberReturnsFalse() {
+        let invalidStringArray = ["A", "B", "1"]
+        XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenStringArrayContainsSpecialCharacterReturnsFalse() {
+        let invalidStringArray = ["A", "B", "\n"]
+        XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenStringArrayContainsEmptyStringReturnsFalse() {
+        let invalidStringArray = ["A", ""]
+        XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenStringArrayContainsSpaceReturnsFalse() {
+        let invalidStringArray = ["A", " "]
+        XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
+    }
+
+    func testIsStringArrayConsistingOfValidLettersWhenEmptyArrayReturnsFalse() {
+        let invalidStringArray: [String] = []
+        XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
+    }
+
 }
-
-//    func testAddOneLetterLowercaseToCipheredTextGetCipheredTextReturnsUppercasedCipheredText() {
-//        sut.addLetterToCipheredText("a")
-//
-//        XCTAssert(sut.cipheredText.count == 1 && sut.cipheredText == "A")
-//        XCTAssertEqual(sut.getCipheredText(), "A")
-//    }
-//
-//    func testAddOneLetterUppercaseToCipheredTextGetCipheredTextReturnsUnchangedLetterInCipheredText() {
-//        sut.addLetterToCipheredText("X")
-//
-//        XCTAssert(sut.cipheredText.count == 1 && sut.cipheredText == "X")
-//        XCTAssertEqual(sut.getCipheredText(), "X")
-//    }
-//
-//    func testAddSixLettersToCipheredTextGetArrayOfCpheredTextReturnsTwoStrings() {
-//        sut.addLetterToCipheredText("a")
-//        sut.addLetterToCipheredText("b")
-//        sut.addLetterToCipheredText("c")
-//        sut.addLetterToCipheredText("d")
-//        sut.addLetterToCipheredText("e")
-//        sut.addLetterToCipheredText("f")
-//
-//        let expected = ["ABCDE", "F"]
-//
-//        XCTAssertEqual(sut.getArrayOfSplittedCipheredText(), expected)
-//    }
-//
-//    func testAddSevenLettersToCipheredTextGetArrayOfCpheredTextReturnsTwoStrings() {
-//        sut.addLetterToCipheredText("a")
-//        sut.addLetterToCipheredText("b")
-//        sut.addLetterToCipheredText("c")
-//        sut.addLetterToCipheredText("d")
-//        sut.addLetterToCipheredText("e")
-//        sut.addLetterToCipheredText("f")
-//        sut.addLetterToCipheredText("g")
-//
-//        let expected = ["ABCDE", "FG"]
-//
-//        XCTAssertEqual(sut.getArrayOfSplittedCipheredText(), expected)
-//    }
-//
-//    func testAddTwoLettersToCipheredTextGetArrayOfCpheredTextReturnsOneString() {
-//        sut.addLetterToCipheredText("z")
-//        let expected = ["Z"]
-//
-//        XCTAssertEqual(sut.getArrayOfSplittedCipheredText(), expected)
-//    }
-
