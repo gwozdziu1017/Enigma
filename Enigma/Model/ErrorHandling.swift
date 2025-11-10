@@ -11,4 +11,5 @@ enum TextError: Error {
 
 enum PlugboardError: Error {
     case PlugboardConnectionError
+    case RemovingConnectionError
 }
