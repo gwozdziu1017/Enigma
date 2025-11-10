@@ -74,3 +74,24 @@ struct CipheredTextModel {
         return arrayToReturn
     }
 }
+
+extension String {
+    func getAsArrayOfFiveElementStrings() -> [String] {
+        guard !self.isEmpty else { return [] }
+        var counter = 0
+        var result: [String] = []
+        var temporaryString: String = ""
+
+        for char in self {
+            if counter == 5 {
+                result.append(temporaryString)
+                temporaryString = ""
+                counter = 0
+            }
+            temporaryString.append(String(char))
+            counter += 1
+        }
+        result.append(temporaryString)
+        return result
+    }
+}

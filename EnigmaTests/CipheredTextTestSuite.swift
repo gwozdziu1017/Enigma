@@ -114,4 +114,23 @@ final class CipheredTextTestSuite: XCTestCase {
         XCTAssertFalse(CipheredTextModel.isStringArrayConsistingOfValidLetters(invalidStringArray))
     }
 
+    func testCipheredTextModelStringExtensionWhenStringDividableByFive() {
+        let stringToDivideOneArray = "ABCDE"
+        let stringToDivideTwoArrays = "ABCDEFGYHJ"
+        XCTAssertEqual(stringToDivideOneArray.getAsArrayOfFiveElementStrings() , ["ABCDE"])
+        XCTAssertEqual(stringToDivideTwoArrays.getAsArrayOfFiveElementStrings() , ["ABCDE", "FGYHJ"])
+    }
+
+    func testCipheredTextModelStringExtensionWhenStringIsNotDividableByFive() {
+        let stringToDivideOneArray = "ABC"
+        let stringToDivideTwoArrays = "QWERTY"
+
+        XCTAssertEqual(stringToDivideOneArray.getAsArrayOfFiveElementStrings() , ["ABC"])
+        XCTAssertEqual(stringToDivideTwoArrays.getAsArrayOfFiveElementStrings() , ["QWERT", "Y"])
+    }
+
+    func testCipheredTextModelStringExtensionWhenEmptyStringReturnsEmptyArray() {
+        let emptyString: String = ""
+        XCTAssertEqual(emptyString.getAsArrayOfFiveElementStrings(), [])
+    }
 }
